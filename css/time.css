@@ -1,0 +1,223 @@
+/* 页面一 */
+#page1 .selectDown { list-style: none; position: absolute; top: 28px; right: 8px; border: 1px solid #eee; background-color: #000; padding-left: 0px; text-align: center; display: none; }
+#page1 .selectDown a { text-decoration: none; color: #fff; font-size: 12.5px; display: inline-block; padding: 10px; font-weight: normal; font-family: "微软雅黑"; }
+#page1 .selectDownLocation { list-style: none; position: absolute; top: 28px; left: 8px; border: 1px solid #eee; background-color: #000; padding-left: 0px; text-align: center; display: none; }
+#page1 .selectDownLocation a { text-decoration: none; color: #fff; font-size: 12.5px; display: inline-block; padding: 10px; font-weight: normal; font-family: "微软雅黑"; }
+
+
+/*页面一 */
+/*section one*/
+
+#dateMessage .current-time{
+    font-size: 48px;
+}
+
+#dateMessage img{
+    width:50px;
+}
+
+
+
+/*section two*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#course-table{
+
+}
+
+
+#course-table tbody{
+    text-align: center;
+}
+
+#course-table th{
+    padding: 0;
+    border: 1px solid #ccc;
+}
+
+
+
+#course-table td{
+    text-align: center;
+    border: 1px solid #EEE;
+}
+
+
+
+
+#course-table .table-subject{
+    font-size: 2em;
+}
+
+
+.main-wrap{
+    /*padding: 5px;*/
+    width:100%;
+    text-align: center;
+    border: 2px solid #ccc;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    color: #ccc;
+
+
+}
+
+.top-wrap {
+    height: 80px;
+
+    margin: 5px 5px 0px 5px;
+    padding: 0;
+    background-color: #fff;
+}
+
+.top-left{
+    color:#000;
+    float: left;
+    height: 100%;
+    padding: 0;
+    width: 66.6%;
+    /*font-size: 46px;*/
+}
+
+.top-right{
+    color:#ccc;
+    float: left;
+    width: 33.3%;
+    height: 100%;
+    clear: right;
+    padding-top: 0px;
+}
+
+.bottom-wrap{
+    background-color: #fff;
+}
+.bottom-left,.bottom-right,.bottom-center{
+    float: left;
+    width: 33.3%;
+    height: 50px;
+    font-size: 16px;
+    /*background-color: #ccc;*/
+}
+
+.bottom-right{
+    clear: right;
+}
+
+.ui-content{
+    padding-bottom: 0;
+}
+
+
+.clear{
+    clear: both;
+}
+
+.course-tab{
+    font-weight:100;
+}
+
+
+.course-subject,.last-time,.teacher-name,.teacher-time,.teacher-location{
+    display: inline-block;
+    padding: 5px 0;
+    font-size: 16px;
+    color:#000;
+}
+
+.course-subject{
+    padding-top: 10px;
+    font-size: 36px;
+}
+
+.header-wrap{
+    color: black;
+    background-color: #CCC;
+    padding: 5px;
+    
+}
+
+
+
+
+
+
+
+.subject-wrap{
+    width: 66.6%;
+}
+
+.subject{
+    /*margin: 0;*/
+    /*padding: 10px;*/
+}
+
+.subject h3{
+    font-size: 30px;
+    text-align: center;
+}
+.page1_main { position: relative;}
+.content-wrap{margin-bottom: 15px;border: 2px solid #CCC;border-radius: 5px;background-color: white;position: relative;}
+.content-wrap .header{background-color: #ccc;
+    padding: 5px;}
+.refresh { position: absolute; right: 15px;}
+.refresh p { margin: 0;display: inline-block;  font-size: 10px; text-align: center;
+    position: relative;bottom:5px;}
+.page1_pos { text-align: center;  }
+.content-wrap .content{
+    padding: 10px;
+}
+.content .left{
+    width:80px;
+    margin: 0;
+    display: inline-block;
+}
+.content .right{
+    margin-left:15%;display:inline-block ;text-align: left;
+}
+
+
+.table_wrap { overflow: auto;border: 2px solid #CCC;border-radius: 5px;background-color: #eee;}
+.table_wrap p{width: 100%;}
+.table_top { margin:5px 5px 5px 15px;}
+table { width: 100%; padding: 0 10px;background-color:white}
+td { width: 1px; white-space: nowrap; word-break: keep-all; padding: 5px; text-align: center; }
+.suggest { font-weight: normal; }
+.suggest span { float: right; }
+
+
+
+
+/*page2*/
+.collap-title{
+    background-color: #FF0;
+
+}
+#page2 .page-two-content-header{
+
+}
+.ui-content a{
+    text-decoration:none;
+}
+#list a{
+    text-decoration:none;
+    text-align: center;
+}
+
+
+/*page3*/
+
+/*page4*/
+
+/*page5*/

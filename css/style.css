@@ -1,0 +1,56 @@
+/* 页面一 */
+#page1 .selectDown { list-style: none; position: absolute; top: 28px; right: 8px; border: 1px solid #eee; background-color: #000; padding-left: 0px; text-align: center; display: none; }
+#page1 .selectDown a { text-decoration: none; color: #fff; font-size: 12.5px; display: inline-block; padding: 10px; font-weight: normal; font-family: "微软雅黑"; }
+#page1 .selectDownLocation { list-style: none; position: absolute; top: 28px; left: 8px; border: 1px solid #eee; background-color: #000; padding-left: 0px; text-align: center; display: none; }
+#page1 .selectDownLocation a { text-decoration: none; color: #fff; font-size: 12.5px; display: inline-block; padding: 10px; font-weight: normal; font-family: "微软雅黑"; }
+
+
+.page1_main { position: relative;}
+.content-wrap{margin-bottom: 15px;border: 2px solid #CCC;border-radius: 5px;background-color: white;position: relative;}
+.content-wrap .header{background-color: #ccc;
+    padding: 5px;}
+.refresh { position: absolute; right: 15px;}
+.refresh p { margin: 0;display: inline-block;  font-size: 10px; text-align: center;
+    position: relative;bottom:5px;}
+.page1_pos { text-align: center;  }
+.content-wrap .content{
+    padding: 10px;
+}
+.content .left{
+    width:80px;
+    margin: 0px;
+    display: inline-block;
+}
+.content .right{
+    margin-left:15%;display:inline-block ;text-align: left;
+}
+
+
+.table_wrap { overflow: auto;border: 2px solid #CCC;border-radius: 5px;background-color: #eee;}
+.table_wrap p{width: 100%;}
+.table_top { margin:5px 5px 5px 15px;}
+table { width: 100%; padding: 0 10px;background-color:white}
+td { width: 1px; white-space: nowrap; word-break: keep-all; padding: 5px; text-align: center; }
+.suggest { font-weight: normal; }
+.suggest span { float: right; }
+
+/* 页面二 */
+/* div[data-role="collapsible"] { border: 1px solid red; } */
+.collap-title { position: relative; margin-left: -25px; }
+.collap-title-left { width: 20%; position: absolute; left: 0; top: 30%; }
+.collap-title-mid { margin: 0 20%; text-align:center; }
+.collap-title-mid img { width: 30px; height: 30px; }
+.collap-title-right { width: 20%; position: absolute; right: 0; top: 30%; }
+.collap-content { overflow: auto; }
+.collap-content img { vertical-align: middle; width:60px; height:60px; }
+.collap-content-left { float: left; text-align: left; }
+.collap-content-right { float: right; text-align: right; }
+.collap-content-bottom { clear: both; }
+
+.ui-content a{
+    text-decoration:none;
+}
+#list a{
+    text-decoration:none;
+    text-align: center;
+}
