@@ -1,10 +1,3 @@
-/**
- * Created by admin on 2016/4/29.
- */
-/**
- * Created by admin on 2016/4/28.
- */
-
 
 //页面的事件绑定
 $(document).on("pagebeforeshow", "#page1", function() {
@@ -12,6 +5,12 @@ $(document).on("pagebeforeshow", "#page1", function() {
 
     //section1
     showDateTime(now);
+
+
+    getLocation();
+    //天气
+
+    showWeather("武汉");
 
     //section2
     //获取下一节课的课堂次数
@@ -72,6 +71,35 @@ $(document).on("pagebeforeshow", "#page2", function() {
 
     });
 });
+
+
+//注册页面
+$(document).on("pagebeforeshow", "#pageRegister", function() {
+
+    var form = $("#registerForm");
+    var username=form.find("input[name='username']");
+    var email=form.find("input[name='email']");
+    var password=form.find("input[name='password']");
+    var passwords=form.find("input[name='passwords']");
+    var submit = form.find("button[name='register']");
+
+    passwords.blur(function(){
+        alert(passwords.val());
+        if(passwords.val().trim() == password.val().trim()){
+        }else{
+            alert("密码不正确,请重新输入");
+        }
+    });
+
+
+    $("#register").bind("click",function(){
+        alert("注册成功");
+        //跳转到注册成功页面
+    });
+
+});
+
+
 
 $(".select").on("click", function(){
     var selectDown = $(".selectDown");
@@ -138,6 +166,9 @@ function showSubjectSection(now,id,courseTimer,type){
 
     var timer = [830,920,1025,1115,1400,1450,1535,1630,1715,1830,1920,2005,2055];
     var weeker = now.getDay();
+    if(weeker>4){
+        weeker = 0;
+    }
 
     //var courseTimer = getNowTimer(now)+1;
     //var firstCourse = $("#secondCourse");
@@ -180,4 +211,94 @@ function showSubjectSection(now,id,courseTimer,type){
         lastTime.html("明天")
     }
 }
+
+
+
+
+
+//定位
+function getLocation() {
+    //检查浏览器是否支持地理位置获取
+    if (navigator.geolocation) {
+        //若支持地理位置获取,成功调用showPosition(),失败调用showError
+        var config = { enableHighAccuracy: true, timeout: 5000, maximumAge: 30000 };
+        navigator.geolocation.getCurrentPosition(showPosition, showError, config);
+    } else {
+        alert("定位失败,用户已禁用位置获取权限");
+    }
+}
+/**
+ * 获取地址位置成功
+ */
+
+function showPosition(position) {
+    //获得经度纬度
+    var x = position.coords.latitude;
+    var y = position.coords.longitude;
+    var map = new BMap.Map("allmap");
+    var point = new BMap.Point(x,y);
+    var geoc = new BMap.Geocoder();
+
+    geoc.getLocation(point, function(rs){
+        var addComp = rs.addressComponents;
+        showWeather(addComp.city.substring(0,2));
+    });
+}
+/**
+ * 获取地址位置失败[暂不处理]
+ */
+function showError(error) {
+    switch (error.code) {
+        case error.PERMISSION_DENIED:
+            alert("定位失败,用户拒绝请求地理定位");
+            break;
+        case error.POSITION_UNAVAILABLE:
+            alert("定位失败,位置信息是不可用");
+            break;
+        case error.TIMEOUT:
+            alert("定位失败,请求获取用户位置超时");
+            break;
+        case error.UNKNOWN_ERROR:
+            alert("定位失败,定位系统失效");
+            break;
+    }
+}
+
+
+function showWeather(city){
+    var urlPre = "http://www.corsproxy.com/";
+    var url1 = "http://apis.baidu.com/apistore/weatherservice/cityname";
+    var url2 = "http://apis.baidu.com/heweather/weather/free";
+    var url3 = "www.webxml.com.cn/WebServices/TrainTimeWebService.asmx/getDetailInfoByTrainCode?UserID=";
+
+    var _url = url1;
+    var _data={
+        "cityname":city,
+    };
+    var _apikey={
+        "apikey":"50c252b58e6a04a7b13627cd4ec92da8"
+    };
+
+    $.ajax({
+        url: _url,
+        method: 'GET',
+        data:_data,
+        headers: _apikey,
+        success:function(data){
+            //序列化
+            var obj = JSON.parse(data);
+            var temp = $("#dateMessage").find(".current-weather");
+            temp.html(obj.retData.temp+"℃");
+
+            var weather = obj.retData.weather;
+            var wea =$("#dateMessage").find(".current-weather-img");
+            wea.html("<br>"+weather);
+
+        },
+        error:function(data){
+            alert(data);
+        }
+    });
+}
+
 

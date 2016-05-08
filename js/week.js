@@ -440,6 +440,6 @@ var weeks=[
                 location:"8-415"
             }]
         }
-    },
+    }
 ];
 

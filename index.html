@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=divice-width, initial-scale=1">
 
-    <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
-    <link rel="stylesheet" type="text/css" href="http://o6p7u6l30.bkt.clouddn.com/time.css">
-
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" type="text/css" href="css/time.css">
     <title>教师上课提醒系统</title>
 </head>
 <body>
@@ -23,7 +22,7 @@
         <div class="main-wrap">
             <div class="top-wrap">
                 <div class="top-left"><span class="current-time">18:20</span></div>
-                <div class="top-right"><img src="images/100.png" alt="天气图标" class="current-weather-img"><br>武汉多云</div>
+                <div class="top-right"><img src="http://files.heweather.com/cond_icon/100.png" alt="天气图标" class="current-weather-img"><br>武汉多云</div>
                 <div class="clear"></div>
             </div>
             <div class="bottom-wrap">
@@ -71,9 +70,9 @@
     <footer data-role="footer" data-position="fixed">
         <div data-role="navbar">
             <ul>
-                <li><a href="#page1" class="ui-btn ui-icon-home ui-btn-icon-top">首页</a></li>
-                <li><a href="#page2" class="ui-btn ui-icon-bars ui-btn-icon-top">课程表</a></li>
-                <li><a href="#page3" class="ui-btn ui-icon-user ui-btn-icon-top">我的</a></li>
+                <li><a href="#page1" class="ui-btn ui-icon-home ui-btn-icon-top" data-ajax="false">首页</a></li>
+                <li><a href="#page2" class="ui-btn ui-icon-bars ui-btn-icon-top" data-ajax="false">课程表</a></li>
+                <li><a href="#page3" class="ui-btn ui-icon-user ui-btn-icon-top" data-ajax="false">我的</a></li>
             </ul>
         </div>
     </footer>
@@ -84,7 +83,7 @@
     <header data-role="header" data-position="fixed">
         <a href="#" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-shadow ui-corner-all" data-rel="back">返回</a>
         <h1>第九周</h1>
-        <a href="#addClass" class="ui-btn ui-icon-plus  ui-btn-icon-notext ui-shadow"></a>
+        <a href="#addClass" class="ui-btn ui-icon-plus ui-btn-icon-notext ui-shadow ui-corner-all"></a>
     </header>
     <section role="main" class="ui-content page2Main" >
         <div data-role="collapsible" data-mini="true" class="course ui-nodisc-icon " data-expanded-icon="arrow-u" data-collapsed-icon="arrow-d" data-iconpos="right">
@@ -206,9 +205,9 @@
     <footer data-role="footer" data-position="fixed">
         <div data-role="navbar">
             <ul>
-                <li><a href="#page1" class="ui-btn ui-icon-home ui-btn-icon-top">首页</a></li>
-                <li><a href="#page2" class="ui-btn ui-icon-bars ui-btn-icon-top">课程表</a></li>
-                <li><a href="#page3" class="ui-btn ui-icon-user ui-btn-icon-top">我的</a></li>
+                <li><a href="#page1" class="ui-btn ui-icon-home ui-btn-icon-top" data-ajax="false">首页</a></li>
+                <li><a href="#page2" class="ui-btn ui-icon-bars ui-btn-icon-top" data-ajax="false">课程表</a></li>
+                <li><a href="#page3" class="ui-btn ui-icon-user ui-btn-icon-top" data-ajax="false">我的</a></li>
             </ul>
         </div>
     </footer>
@@ -218,7 +217,7 @@
 
 
 
-<!--设置页面-->
+<!--未登录的设置页面-->
 <section data-role="page" id="page3">
     <header data-role="header" data-position="fixed">
         <a href="#" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-shadow ui-corner-all" data-rel="back">返回</a>
@@ -229,9 +228,11 @@
             <ul data-role="listview">
                 <li><a href="#pageLogin">登录/注册</a></li>
                 <li><a>当前周数</a></li>
+                <li><a href="#">课表管理</a></li>
                 <li><a href="#personalInformation">我的资料</a></li>
-                <li><a>消息</a></li>
-                <li><a>收藏</a></li>
+                <li><a href="#message">消息</a></li>
+                <li><a href="#collection">收藏</a></li>
+
             </ul>
         </div>
     </article>
@@ -240,15 +241,55 @@
             <ul data-role="listview">
                 <li><a href="#feedback">帮助与反馈</a></li>
                 <li><a href="#setting">设置</a></li>
+                <li><a href="#about">关于</a></li>
             </ul>
         </div>
     </article>
     <footer data-role="footer" data-position="fixed">
         <div data-role="navbar">
             <ul>
-                <li><a href="#page1" class="ui-btn ui-icon-home ui-btn-icon-top">首页</a></li>
-                <li><a href="#page2" class="ui-btn ui-icon-bars ui-btn-icon-top">课程表</a></li>
-                <li><a href="#page3" class="ui-btn ui-icon-user ui-btn-icon-top">我的</a></li>
+                <li><a href="#page1" class="ui-btn ui-icon-home ui-btn-icon-top" data-ajax="false">首页</a></li>
+                <li><a href="#page2" class="ui-btn ui-icon-bars ui-btn-icon-top" data-ajax="false">课程表</a></li>
+                <li><a href="#page3" class="ui-btn ui-icon-user ui-btn-icon-top" data-ajax="false">我的</a></li>
+            </ul>
+        </div>
+    </footer>
+</section>
+
+<!--已登录的设置页面-->
+<section data-role="page" id="inLogin">
+    <header data-role="header" data-position="fixed">
+        <a href="#" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-shadow ui-corner-all" data-rel="back">返回</a>
+        <h1>我的</h1>
+    </header>
+    <article class="ui-content">
+        <div class="ui-field-contain">
+            <ul data-role="listview">
+                <li><a href="#pageLogin">注销</a></li>
+                <li><a>当前周数</a></li>
+                <li><a href="#">课表管理</a></li>
+                <li><a href="#personalInformation">我的资料</a></li>
+                <li><a href="#message">消息</a></li>
+                <li><a href="#collection">收藏</a></li>
+
+            </ul>
+        </div>
+    </article>
+    <article class="ui-content">
+        <div class="ui-field-contain">
+            <ul data-role="listview">
+                <li><a href="#feedback">帮助与反馈</a></li>
+                <li><a href="#setting">设置</a></li>
+                <li><a href="#about">关于</a></li>
+            </ul>
+        </div>
+    </article>
+    <footer data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#page1" class="ui-btn ui-icon-home ui-btn-icon-top" data-ajax="false">首页</a></li>
+                <li><a href="#page2" class="ui-btn ui-icon-bars ui-btn-icon-top" data-ajax="false">课程表</a></li>
+                <li><a href="#page3" class="ui-btn ui-icon-user ui-btn-icon-top" data-ajax="false">我的</a></li>
             </ul>
         </div>
     </footer>
@@ -259,7 +300,7 @@
 
 
 
-<!--登陆-->
+<!--登录-->
 <section data-role="page" id="pageLogin">
     <header data-role="header" data-position="fixed">
         <a href="#" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-shadow ui-corner-all" data-rel="back">返回</a>
@@ -272,8 +313,8 @@
                 <input type="text" placeholder="请输入用户名">
                 <input type="password" placeholder="请输入密码">
                 <div class="ui-grid-a">
-                    <a href="#pageRegister" type="button"  class="ui-btn ui-block-a">注册</a>
-                    <button id="sign" class="ui-block-b">登陆</button>
+                    <div class="ui-block-a"><a href="#pageRegister" type="button"  class="ui-btn">注册</a></div>
+                    <div class="ui-block-b"><button id="Login" class="ui-btn">登录</button></div>
                 </div>
             </form>
         </li>
@@ -281,9 +322,9 @@
     <footer data-role="footer" data-position="fixed">
         <div data-role="navbar">
             <ul>
-                <li><a href="#page1" class="ui-btn ui-icon-home ui-btn-icon-top">首页</a></li>
-                <li><a href="#page2" class="ui-btn ui-icon-bars ui-btn-icon-top">课程表</a></li>
-                <li><a href="#page3" class="ui-btn ui-icon-user ui-btn-icon-top">我的</a></li>
+                <li><a href="#page1" class="ui-btn ui-icon-home ui-btn-icon-top" data-ajax="false">首页</a></li>
+                <li><a href="#page2" class="ui-btn ui-icon-bars ui-btn-icon-top" data-ajax="false">课程表</a></li>
+                <li><a href="#page3" class="ui-btn ui-icon-user ui-btn-icon-top" data-ajax="false">我的</a></li>
             </ul>
         </div>
     </footer>
@@ -303,15 +344,15 @@
 
         <ul data-role="listview">
             <li>
-                <form>
+                <form id="registerForm" action="index.html#pageRegister" method="post">
                     <div class="tip"></div>
-                    <input type="text" placeholder="请输入用户名">
-                    <input type="email" placeholder="请输入邮箱">
-                    <input type="password" placeholder="请输入密码">
-                    <input type="password" placeholder="请再次输入密码">
+                    <input type="text" name="username" min="6" max="15" placeholder="请输入用户名" value="" autofocus required="required">
+                    <input type="email" name="email" placeholder="请输入邮箱" value="" required="required">
+                    <input type="password" name="password" placeholder="请输入密码" value="" required="required">
+                    <input type="password" name="passwords" placeholder="请再次输入密码" value="" required="required">
                     <div class="ui-grid-a">
-                        <a href="#pageLogin" type="button"  class="ui-btn ui-block-a">登录</a>
-                        <button id="sign" class="ui-block-b">注册</button>
+                        <div class="ui-block-a"><a href="#pageLogin" type="button"  class="ui-btn">登录</a></div>
+                        <div class="ui-block-b"><button  name="register" class="ui-btn">注册</button></div>
                     </div>
                 </form>
             </li>
@@ -320,16 +361,16 @@
     <footer data-role="footer" data-position="fixed">
         <div data-role="navbar">
             <ul>
-                <li><a href="#page1" class="ui-btn ui-icon-home ui-btn-icon-top">首页</a></li>
-                <li><a href="#page2" class="ui-btn ui-icon-bars ui-btn-icon-top">课程表</a></li>
-                <li><a href="#page3" class="ui-btn ui-icon-user ui-btn-icon-top">我的</a></li>
+                <li><a href="#page1" class="ui-btn ui-icon-home ui-btn-icon-top" data-ajax="false">首页</a></li>
+                <li><a href="#page2" class="ui-btn ui-icon-bars ui-btn-icon-top" data-ajax="false">课程表</a></li>
+                <li><a href="#page3" class="ui-btn ui-icon-user ui-btn-icon-top" data-ajax="false">我的</a></li>
             </ul>
         </div>
     </footer>
 </section>
 
 
-
+<!--我的资料-->
 <section data-role="page" id="personalInformation">
     <header data-role="header" data-position="fixed">
         <a href="#" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-shadow ui-corner-all" data-rel="back">放回</a>
@@ -348,9 +389,9 @@
     <footer data-role="footer" data-position="fixed">
         <div data-role="navbar">
             <ul>
-                <li><a href="#page1" class="ui-btn ui-icon-home ui-btn-icon-top">首页</a></li>
-                <li><a href="#page2" class="ui-btn ui-icon-bars ui-btn-icon-top">课程表</a></li>
-                <li><a href="#page3" class="ui-btn ui-icon-user ui-btn-icon-top">我的</a></li>
+                <li><a href="#page1" class="ui-btn ui-icon-home ui-btn-icon-top" data-ajax="false">首页</a></li>
+                <li><a href="#page2" class="ui-btn ui-icon-bars ui-btn-icon-top" data-ajax="false">课程表</a></li>
+                <li><a href="#page3" class="ui-btn ui-icon-user ui-btn-icon-top" data-ajax="false">我的</a></li>
             </ul>
         </div>
     </footer>
@@ -370,71 +411,117 @@
                     <input id="course-1" type="text" placeholder="请输入课程名">
                     <input type="text" placeholder="请输入上课老师的名字">
                     <input type="text" placeholder="请输入上课地点">
-                    <input type="text" placeholder="请输入上课时间">
                 </li>
+                <li>
+                    <fieldset data-role="controlgroup" data-type="horizontal">
+                    <legend>星期</legend>
+                    <label for="Week1">星期一</label>
+                    <input type="radio" name="weeks" id="Week1">
+                    <label for="Week2">星期二</label>
+                    <input type="radio" name="weeks" id="Week2">
+                    <label for="week3">星期三</label>
+                    <input type="radio" name="weeks" id="week3">
+                    <label for="week4">星期四</label>
+                    <input type="radio" name="weeks" id="week4">
+                    <label for="week5">星期五</label>
+                    <input type="radio" name="weeks" id="week5">
+                    <label for="week6">星期六</label>
+                    <input type="radio" name="weeks" id="week6">
+                    <label for="week7">星期日</label>
+                    <input type="radio" name="weeks" id="week7">
+                </fieldset></li>
+
+                <li>
+                    <fieldset data-role="controlgroup" data-type="horizontal">
+                        <legend>上课的堂次</legend>
+                        <label for="course1">第一节课</label>
+                        <input type="radio" name="course" id="course1">
+                        <label for="course2">第二节课</label>
+                        <input type="radio" name="course" id="course2">
+                        <label for="course3">第三节课</label>
+                        <input type="radio" name="course" id="course3">
+                        <label for="course4">第四节课</label>
+                        <input type="radio" name="course" id="course4">
+                        <label for="course5">第五节课</label>
+                        <input type="radio" name="course" id="course5">
+                        <label for="course6">第六节课</label>
+                        <input type="radio" name="course" id="course6">
+                        <label for="course7">第七节课</label>
+                        <input type="radio" name="course" id="course7">
+                        <label for="course8">第八节课</label>
+                        <input type="radio" name="course" id="course8">
+                        <label for="course9">第九节课</label>
+                        <input type="radio" name="course" id="course9">
+                        <label for="course10">第十节课</label>
+                        <input type="radio" name="course" id="course10">
+                        <label for="course11">第十一节课</label>
+                        <input type="radio" name="course" id="course11">
+                        <label for="course12">第十二节课</label>
+                        <input type="radio" name="course" id="course12">
+                    </fieldset></li>
                 <li>
                     <fieldset data-role="controlgroup" data-type="horizontal">
                         <legend>单双周：</legend>
                         <label for="Weeks">单双周</label>
-                        <input type="radio" name="gender" id="Weeks">
+                        <input type="radio" name="week" id="Weeks">
                         <label for="oneWeek">单周</label>
-                        <input type="radio" name="gender" id="oneWeek">
+                        <input type="radio" name="week" id="oneWeek">
                         <label for="twoWeek">双周</label>
-                        <input type="radio" name="gender" id="twoWeek">
+                        <input type="radio" name="week" id="twoWeek">
                     </fieldset>
                     <br>
                     <fieldset data-role="controlgroup" data-type="horizontal">
                         <legend>上课的周次：</legend>
                         <label for="week-1">01</label>
-                        <input type="checkbox" name="favcolor" id="week-1" value="1">
+                        <input type="checkbox" name="term" id="week-1" value="1">
                         <label for="week-2">02</label>
-                        <input type="checkbox" name="favcolor" id="week-2" value="2">
+                        <input type="checkbox" name="term" id="week-2" value="2">
                         <label for="week-3">03</label>
-                        <input type="checkbox" name="favcolor" id="week-3" value="3">
+                        <input type="checkbox" name="term" id="week-3" value="3">
                         <label for="week-4">04</label>
-                        <input type="checkbox" name="favcolor" id="week-4" value="4">
+                        <input type="checkbox" name="term" id="week-4" value="4">
                         <label for="week-5">05</label>
-                        <input type="checkbox" name="favcolor" id="week-5" value="5">
+                        <input type="checkbox" name="term" id="week-5" value="5">
                         <label for="week-6">06</label>
-                        <input type="checkbox" name="favcolor" id="week-6" value="6">
+                        <input type="checkbox" name="term" id="week-6" value="6">
                         <label for="week-7">07</label>
-                        <input type="checkbox" name="favcolor" id="week-7" value="7">
+                        <input type="checkbox" name="term" id="week-7" value="7">
                         <label for="week-8">08</label>
-                        <input type="checkbox" name="favcolor" id="week-8" value="8">
+                        <input type="checkbox" name="term" id="week-8" value="8">
                         <label for="week-9">09</label>
-                        <input type="checkbox" name="favcolor" id="week-9" value="9">
+                        <input type="checkbox" name="term" id="week-9" value="9">
                         <label for="week-10">10</label>
-                        <input type="checkbox" name="favcolor" id="week-10" value="10">
+                        <input type="checkbox" name="term" id="week-10" value="10">
                         <label for="week-11">11</label>
-                        <input type="checkbox" name="favcolor" id="week-11" value="11">
+                        <input type="checkbox" name="term" id="week-11" value="11">
                         <label for="week-12">12</label>
-                        <input type="checkbox" name="favcolor" id="week-12" value="12">
+                        <input type="checkbox" name="term" id="week-12" value="12">
                         <label for="week-13">13</label>
-                        <input type="checkbox" name="favcolor" id="week-13" value="13">
+                        <input type="checkbox" name="term" id="week-13" value="13">
                         <label for="week-14">14</label>
-                        <input type="checkbox" name="favcolor" id="week-14" value="14">
+                        <input type="checkbox" name="term" id="week-14" value="14">
                         <label for="week-15">15</label>
-                        <input type="checkbox" name="favcolor" id="week-15" value="15">
+                        <input type="checkbox" name="term" id="week-15" value="15">
                         <label for="week-16">16</label>
-                        <input type="checkbox" name="favcolor" id="week-16" value="16">
+                        <input type="checkbox" name="term" id="week-16" value="16">
                         <label for="week-17">17</label>
-                        <input type="checkbox" name="favcolor" id="week-17" value="17">
+                        <input type="checkbox" name="term" id="week-17" value="17">
                         <label for="week-18">18</label>
-                        <input type="checkbox" name="favcolor" id="week-18" value="18">
+                        <input type="checkbox" name="term" id="week-18" value="18">
                         <label for="week-19">19</label>
-                        <input type="checkbox" name="favcolor" id="week-19" value="19">
+                        <input type="checkbox" name="term" id="week-19" value="19">
                         <label for="week-20">20</label>
-                        <input type="checkbox" name="favcolor" id="week-20" value="20">
+                        <input type="checkbox" name="term" id="week-20" value="20">
                         <label for="week-21">21</label>
-                        <input type="checkbox" name="favcolor" id="week-21" value="21">
+                        <input type="checkbox" name="term" id="week-21" value="21">
                         <label for="week-22">22</label>
-                        <input type="checkbox" name="favcolor" id="week-22" value="22">
+                        <input type="checkbox" name="term" id="week-22" value="22">
                         <label for="week-23">23</label>
-                        <input type="checkbox" name="favcolor" id="week-23" value="23">
+                        <input type="checkbox" name="term" id="week-23" value="23">
                         <label for="week-24">24</label>
-                        <input type="checkbox" name="favcolor" id="week-24" value="24">
+                        <input type="checkbox" name="term" id="week-24" value="24">
                         <label for="week-25">25</label>
-                        <input type="checkbox" name="favcolor" id="week-25" value="25">
+                        <input type="checkbox" name="term" id="week-25" value="25">
                     </fieldset>
                 </li>
                 <li><button type="submit">提交</button></li>
@@ -446,9 +533,9 @@
     <footer data-role="footer" data-position="fixed">
         <div data-role="navbar">
             <ul>
-                <li><a href="#page1" class="ui-btn ui-icon-home ui-btn-icon-top">首页</a></li>
-                <li><a href="#page2" class="ui-btn ui-icon-bars ui-btn-icon-top">课程表</a></li>
-                <li><a href="#page3" class="ui-btn ui-icon-user ui-btn-icon-top">我的</a></li>
+                <li><a href="#page1" class="ui-btn ui-icon-home ui-btn-icon-top" data-ajax="false">首页</a></li>
+                <li><a href="#page2" class="ui-btn ui-icon-bars ui-btn-icon-top" data-ajax="false">课程表</a></li>
+                <li><a href="#page3" class="ui-btn ui-icon-user ui-btn-icon-top" data-ajax="false">我的</a></li>
             </ul>
         </div>
     </footer>
@@ -463,7 +550,7 @@
     <article class="ui-content">
         <div class="ui-field-contain">
             <ul data-role="listview">
-                <li><a>当前周数</a></li>
+                <li><a>当前周数<span class="">第九周</span></a></li>
                 <li><a href="#addClass">添加课程</a></li>
                 <li><a>导入课表</a></li>
                 <li><a>删除课程</a></li>
@@ -473,9 +560,9 @@
     <footer data-role="footer" data-position="fixed">
         <div data-role="navbar">
             <ul>
-                <li><a href="#page1" class="ui-btn ui-icon-home ui-btn-icon-top">首页</a></li>
-                <li><a href="#page2" class="ui-btn ui-icon-bars ui-btn-icon-top">课程表</a></li>
-                <li><a href="#page3" class="ui-btn ui-icon-user ui-btn-icon-top">我的</a></li>
+                <li><a href="#page1" class="ui-btn ui-icon-home ui-btn-icon-top" data-ajax="false">首页</a></li>
+                <li><a href="#page2" class="ui-btn ui-icon-bars ui-btn-icon-top" data-ajax="false">课程表</a></li>
+                <li><a href="#page3" class="ui-btn ui-icon-user ui-btn-icon-top" data-ajax="false">我的</a></li>
             </ul>
         </div>
     </footer>
@@ -485,31 +572,110 @@
 <section data-role="page" id="feedback">
     <header data-role="header" data-position="fixed">
         <a href="#" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-shadow ui-corner-all" data-rel="back">放回</a>
-        <h1>设置</h1>
+        <h1>帮助与反馈</h1>
     </header>
     <article class="ui-content">
         <div class="ui-field-contain">
            <fieldset>
-               <label>email</label>
+               <legend>Email</legend>
                <input type="email" placeholder="请输入邮箱名">
            </fieldset>
+
+            <fieldset>
+                <legend>反馈信息</legend>
+                <label>
+                    <textarea cols="50" placeholder="请输入要反馈的信息"></textarea>
+                </label>
+            </fieldset>
+
+            <input type="button" class="ui-btn" value="提交">
         </div>
     </article>
     <footer data-role="footer" data-position="fixed">
         <div data-role="navbar">
             <ul>
-                <li><a href="#page1" class="ui-btn ui-icon-home ui-btn-icon-top">首页</a></li>
-                <li><a href="#page2" class="ui-btn ui-icon-bars ui-btn-icon-top">课程表</a></li>
-                <li><a href="#page3" class="ui-btn ui-icon-user ui-btn-icon-top">我的</a></li>
+                <li><a href="#page1" class="ui-btn ui-icon-home ui-btn-icon-top" data-ajax="false">首页</a></li>
+                <li><a href="#page2" class="ui-btn ui-icon-bars ui-btn-icon-top" data-ajax="false">课程表</a></li>
+                <li><a href="#page3" class="ui-btn ui-icon-user ui-btn-icon-top" data-ajax="false">我的</a></li>
             </ul>
         </div>
     </footer>
 </section>
 
-<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-<script type="text/javascript" src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<script type="text/javascript" src="http://o6p7u6l30.bkt.clouddn.com/week.js"></script>
-<script type="text/javascript" src="http://o6p7u6l30.bkt.clouddn.com/schedule.js"></script>
+
+<section data-role="page" id="collection">
+    <header data-role="header" data-position="fixed">
+        <a href="#" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-shadow ui-corner-all" data-rel="back">放回</a>
+        <h1>收藏</h1>
+    </header>
+    <article class="ui-content">
+        <div class="ui-field-contain">
+
+        </div>
+    </article>
+    <footer data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#page1" class="ui-btn ui-icon-home ui-btn-icon-top" data-ajax="false">首页</a></li>
+                <li><a href="#page2" class="ui-btn ui-icon-bars ui-btn-icon-top" data-ajax="false">课程表</a></li>
+                <li><a href="#page3" class="ui-btn ui-icon-user ui-btn-icon-top" data-ajax="false">我的</a></li>
+            </ul>
+        </div>
+    </footer>
+</section>
+
+<section data-role="page" id="message">
+    <header data-role="header" data-position="fixed">
+        <a href="#" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-shadow ui-corner-all" data-rel="back">放回</a>
+        <h1>消息提醒</h1>
+    </header>
+    <article class="ui-content">
+        <div class="ui-field-contain">
+
+        </div>
+    </article>
+    <footer data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#page1" class="ui-btn ui-icon-home ui-btn-icon-top" data-ajax="false">首页</a></li>
+                <li><a href="#page2" class="ui-btn ui-icon-bars ui-btn-icon-top" data-ajax="false">课程表</a></li>
+                <li><a href="#page3" class="ui-btn ui-icon-user ui-btn-icon-top" data-ajax="false">我的</a></li>
+            </ul>
+        </div>
+    </footer>
+</section>
+
+<section data-role="page" id="about">
+    <header data-role="header" data-position="fixed">
+        <a href="#" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-shadow ui-corner-all" data-rel="back">放回</a>
+        <h1>关于</h1>
+    </header>
+    <article class="ui-content">
+        <div class="ui-field-contain">
+            <h3>关于软件</h3>
+            <p>教师上课提醒系统</p>
+            <p>版本:.0.0.1</p>
+            <p>教师上课提醒系统是一课程表管理的软件，用户可注册并在云平台随时保存自己的课表，并且可以用任意pc,手机等平台查看</p>
+        </div>
+    </article>
+    <footer data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#page1" class="ui-btn ui-icon-home ui-btn-icon-top" data-ajax="false">首页</a></li>
+                <li><a href="#page2" class="ui-btn ui-icon-bars ui-btn-icon-top" data-ajax="false">课程表</a></li>
+                <li><a href="#page3" class="ui-btn ui-icon-user ui-btn-icon-top" data-ajax="false">我的</a></li>
+            </ul>
+        </div>
+    </footer>
+</section>
+
+
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Bv7fmM0gxYBjzkSbU36TucOpGNgu8XRQ"></script>
+<script src="js/week.js"></script>
+<script type="text/javascript" src="js/schedule.js"></script>
 
 </body>
 </html>
