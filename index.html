@@ -22,7 +22,7 @@
         <div class="main-wrap">
             <div class="top-wrap">
                 <div class="top-left"><span class="current-time">18:20</span></div>
-                <div class="top-right"><img src="http://files.heweather.com/cond_icon/100.png" alt="天气图标" class="current-weather-img"><br>武汉多云</div>
+                <div class="top-right"><img src="http://files.heweather.com/cond_icon/100.png" alt="天气图标" class="current-weather-img"><br><span class="current-weather-details">武汉多云</span></div>
                 <div class="clear"></div>
             </div>
             <div class="bottom-wrap">
@@ -226,10 +226,10 @@
     <article class="ui-content">
         <div class="ui-field-contain">
             <ul data-role="listview">
-                <li><a href="#pageLogin">登录/注册</a></li>
+                <li><a href="#pageLogin" class="page-state">点击登录</a></li>
                 <li><a>当前周数</a></li>
                 <li><a href="#">课表管理</a></li>
-                <li><a href="#personalInformation">我的资料</a></li>
+                <li><a href="#myInformation">我的资料</a></li>
                 <li><a href="#message">消息</a></li>
                 <li><a href="#collection">收藏</a></li>
 
@@ -268,7 +268,7 @@
                 <li><a href="#pageLogin">注销</a></li>
                 <li><a>当前周数</a></li>
                 <li><a href="#">课表管理</a></li>
-                <li><a href="#personalInformation">我的资料</a></li>
+                <li><a href="#myInformation">我的资料</a></li>
                 <li><a href="#message">消息</a></li>
                 <li><a href="#collection">收藏</a></li>
 
@@ -308,15 +308,15 @@
     </header>
     <ul data-role="listview">
         <li>
-            <form>
+            <div id="loginForm" data-ajax="false" >
                 <div class="tip"></div>
-                <input type="text" placeholder="请输入用户名">
-                <input type="password" placeholder="请输入密码">
+                <input type="email" name="email" placeholder="请输入注册邮箱">
+                <input type="password" name="password" placeholder="请输入密码">
                 <div class="ui-grid-a">
                     <div class="ui-block-a"><a href="#pageRegister" type="button"  class="ui-btn">注册</a></div>
-                    <div class="ui-block-b"><button id="Login" class="ui-btn">登录</button></div>
+                    <div class="ui-block-b"><button name="login" class="ui-btn">登录</button></div>
                 </div>
-            </form>
+            </div>
         </li>
     </ul>
     <footer data-role="footer" data-position="fixed">
@@ -344,10 +344,9 @@
 
         <ul data-role="listview">
             <li>
-                <form id="registerForm" action="index.html#pageRegister" method="post">
+                <form id="registerForm">
                     <div class="tip"></div>
-                    <input type="text" name="username" min="6" max="15" placeholder="请输入用户名" value="" autofocus required="required">
-                    <input type="email" name="email" placeholder="请输入邮箱" value="" required="required">
+                    <input type="email" name="email" placeholder="请输入邮箱" value="" autofocus required="required">
                     <input type="password" name="password" placeholder="请输入密码" value="" required="required">
                     <input type="password" name="passwords" placeholder="请再次输入密码" value="" required="required">
                     <div class="ui-grid-a">
@@ -371,20 +370,58 @@
 
 
 <!--我的资料-->
-<section data-role="page" id="personalInformation">
+<section data-role="page" id="myInformation">
     <header data-role="header" data-position="fixed">
         <a href="#" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-shadow ui-corner-all" data-rel="back">放回</a>
         <h1>我的资料</h1>
     </header>
     <article class="ui-content">
-        <div class="ui-field-contain">
+        <div class="ui-field-contain " >
             <ul data-role="listview">
-                <li><a>昵称</a></li>
-                <li><a>性别</a></li>
-                <li><a>手机</a></li>
-                <li><a>邮箱</a></li>
+                <li data-role="list-divider">基本信息</li>
+                <li>UID <span name="user-uid"></span></li>
+                <li>昵称 <span name="user-name"></span></li>
+                <li>性别 <span name="user-sex"></span></li>
+                <li>手机 <span name="user-tel"></span></li>
+                <li>邮箱 <span name="user-email"></span></li>
             </ul>
         </div>
+        <br>
+       <a href="#modifyData" class="button" data-role="button">修改资料</a>
+
+    </article>
+    <footer data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#page1" class="ui-btn ui-icon-home ui-btn-icon-top" data-ajax="false">首页</a></li>
+                <li><a href="#page2" class="ui-btn ui-icon-bars ui-btn-icon-top" data-ajax="false">课程表</a></li>
+                <li><a href="#page3" class="ui-btn ui-icon-user ui-btn-icon-top" data-ajax="false">我的</a></li>
+            </ul>
+        </div>
+    </footer>
+</section>
+
+
+<!--修改资料-->
+<section data-role="page" id="modifyData">
+    <header data-role="header" data-position="fixed">
+        <a href="#" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-shadow ui-corner-all" data-rel="back">放回</a>
+        <h1>修改资料</h1>
+    </header>
+    <article class="ui-content">
+        <form method="post">
+            <div data-role="fieldcontain">
+                <label for="fullname">昵称：</label>
+                <input type="text" name="user-name" id="infname" >
+                <label for="fullname">性别：</label>
+                <input type="text" name="user-sex" id="fullname" placeholder="性别">
+                <label for="bday">邮箱：</label>
+                <input type="email" name="user-email" id="bday" placeholder="你的邮箱地址">
+                <label for="email">手机：</label>
+                <input type="tel" name="user-tel" id="email" placeholder="您的常用手机号">
+            </div>
+            <input type="submit" name="submit" value="提交">
+        </form>
     </article>
     <footer data-role="footer" data-position="fixed">
         <div data-role="navbar">
@@ -549,9 +586,12 @@
     </header>
     <article class="ui-content">
         <div class="ui-field-contain">
+            <label for="points">本周</label>
+            <input type="range" name="points" id="points" value="50" min="0" max="25" data-highlight="true">
             <ul data-role="listview">
-                <li><a>当前周数<span class="">第九周</span></a></li>
+                <li><a>设置本质</span></a></li>
                 <li><a href="#addClass">添加课程</a></li>
+                <li><a>修改资料</a></li>
                 <li><a>导入课表</a></li>
                 <li><a>删除课程</a></li>
             </ul>
@@ -673,6 +713,7 @@
 
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+<script src = "https://cdn.wilddog.com/js/client/current/wilddog.js" ></script>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Bv7fmM0gxYBjzkSbU36TucOpGNgu8XRQ"></script>
 <script src="js/week.js"></script>
 <script type="text/javascript" src="js/schedule.js"></script>

@@ -1,7 +1,7 @@
 /**
  * Created by admin on 2016/5/6.
  */
-var ref = new Wilddog("https://timetable.wilddogio.com");
+
 
 ref.set({
         "name":"王泽"});
@@ -48,20 +48,20 @@ ref.set({
 
 
 //ʹ�������������е�½
-//var ref = new Wilddog("https://timetable.wilddogio.com");
-//function authHandler(error, authData) {
-//    if (error) {
-//        console.log("Login Failed!", error);
-//    } else {
-//        console.log("Authenticated successfully with payload:", authData);
-//    }
-//}
-//
-//
-//ref.authWithPassword({
-//    email    : '124578842@qq.com',
-//    password : '123456'
-//}, authHandler);
+var ref = new Wilddog("https://timetable.wilddogio.com");
+function authHandler(error, authData) {
+    if (error) {
+        console.log("Login Failed!", error);
+    } else {
+        console.log("Authenticated successfully with payload:", authData);
+    }
+}
+
+
+ref.authWithPassword({
+    email    : '124578842@qq.com',
+    password : '123456'
+}, authHandler);
 //
 //
 ////�û��˳�

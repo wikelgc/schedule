@@ -3,24 +3,22 @@
 $(document).on("pagebeforeshow", "#page1", function() {
     var now = new Date();
 
-    //section1
+    //显示时间
     showDateTime(now);
 
-
+    //获取地理位置
     getLocation();
-    //天气
 
+    //显示天气
     showWeather("武汉");
 
-    //section2
+
     //获取下一节课的课堂次数
     var courseTimer = getNowTimer(now);
-
+    //显示第一堂课的信息
     showSubjectSection(now,$("#firstCourse"),courseTimer,0);
-    //section3
+    //显示第二堂课的信息
     showSubjectSection(now,$("#secondCourse"),courseTimer+1,1);
-
-
 });
 
 
@@ -77,28 +75,273 @@ $(document).on("pagebeforeshow", "#page2", function() {
 $(document).on("pagebeforeshow", "#pageRegister", function() {
 
     var form = $("#registerForm");
-    var username=form.find("input[name='username']");
     var email=form.find("input[name='email']");
     var password=form.find("input[name='password']");
     var passwords=form.find("input[name='passwords']");
-    var submit = form.find("button[name='register']");
+    var register = form.find("button[name='register']");
 
     passwords.blur(function(){
-        alert(passwords.val());
         if(passwords.val().trim() == password.val().trim()){
         }else{
             alert("密码不正确,请重新输入");
         }
     });
 
+    register.bind("click",function(){
+        if((passwords.val()!="")&&(email.val()!="")&&(password.val()!="")){
+            var ref = new Wilddog("https://timetable.wilddogio.com");
 
-    $("#register").bind("click",function(){
-        alert("注册成功");
+            ref.createUser({
+                    email:email.val().trim(),
+                    password:passwords.val().trim()
+                },
+                function(err,data){
+                    if(err!=null){
+                        alert("注册失败");
+                    } else {
+                        alert("注册成功");
+
+
+                        $.mobile.changePage($("#page3"));
+                    }
+                });
+        }else{
+            alert("请填好数据");
+            return;
+        }
+
         //跳转到注册成功页面
     });
 
 });
 
+
+
+
+//登录
+$(document).on("pagebeforeshow", "#pageLogin", function() {
+
+    var form = $("#loginForm");
+    var password=form.find("input[name='password']");
+    var email=form.find("input[name='email']");
+
+
+    var login = form.find("button[name='login']");
+
+    login.bind("click",function(e){
+
+        if(email!=""&&password!=""){
+            var ref = new Wilddog("https://timetable.wilddogio.com");
+
+            ref.authWithPassword({
+                email:email.val().trim(),
+                password:password.val().trim()
+            }, function(error,authData){
+                if (error) {
+                    //console.log("登录失败", error);
+                    //alert("登录失败"+authData.toString());
+                } else {
+                    //console.log("登录成功", authData);
+                    //alert("登录成功"+authData.toString());
+                    //登录成功后获取uid;
+                    //var authData = ref.getAuth();
+
+                    var _uid =authData.uid.replace(/[^0-9]*/g,"").trim();
+
+                    var uid = '{"'+
+                                _uid+'":{' +
+                                    '"uid":"'+_uid+'",' +
+                                    '"email":"'+email.val().trim()+'"' +
+                                '}' +
+                        '}';
+
+                    var _uidjson = $.parseJSON(uid);
+
+                    var child = ref.child("users");
+                    child.update(_uidjson);
+
+
+                    //console.log(email);
+                    $.mobile.changePage($("#page3"));
+                }
+            });
+
+        }else{
+            alert("请填好数据");
+            alert(email+":"+password);
+            return;
+        }
+
+        //跳转到注册成功页面
+    });
+
+});
+
+//登录成功
+$(document).on("pagebeforeshow", "#page3", function() {
+
+    var ref = new Wilddog("https://timetable.wilddogio.com");
+    var authData = ref.getAuth();
+
+    //判断当前账户是否存在
+    if (authData) {
+        //console.log("Authenticated user with uid:", authData.uid);
+        //alert("Authenticated user with uid:"+authData.uid);
+        //alert("登录成功");
+        var state = $("#page3").find(".page-state");
+        state.html("注销");
+
+
+        if(state.html()=="注销"){
+            state.click(function(){
+                state.html("登录/注册");
+                ref.unauth();
+            })
+        }
+    }
+
+});
+
+
+
+//我的信息
+$(document).on("pagebeforeshow", "#myInformation", function() {
+
+    var ref = new Wilddog("https://timetable.wilddogio.com");
+    var authData = ref.getAuth();
+
+    //判断当前账户是否存在
+    if (authData) {
+        //console.log("Authenticated user with uid:", authData.uid);
+
+        //从数据库中获取用户唯一uid
+        var uid =authData.uid.replace(/[^0-9]*/g,"");
+
+        //根据uid查询mongodb中对应的uid文档
+        var _url = ("users/"+uid).trim();
+        var usersRef = ref.child(_url);
+
+
+        usersRef.once("value", function(snapshot) {
+            //如何文档中uid存在则创建相应文档
+            if(snapshot.val().uid!=uid){
+                console.log(snapshot.val().uid);
+                usersRef.update({
+                    "uid":uid
+                });
+            }else{
+                var a = snapshot.val();
+
+                var inf = $("#myInformation");
+                inf.find("[name='user-uid']").html(a.uid);
+                inf.find("[name='user-sex']").html(a.sex);
+                inf.find("[name='user-name']").html(a.name);
+                inf.find("[name='user-email']").html(a.email);
+                inf.find("[name='user-tel']").html(a.tel);
+
+            }
+        }, function (errorObject) {
+            console.log("The read failed: " + errorObject.code);
+        });
+
+
+    }
+
+});
+
+
+$(document).on("pagebeforeshow", "#modifyData", function() {
+
+    var ref = new Wilddog("https://timetable.wilddogio.com");
+    var authData = ref.getAuth();
+
+    //判断当前账户是否存在
+    if (authData) {
+        //console.log("Authenticated user with uid:", authData.uid);
+
+        //从数据库中获取用户唯一uid
+        var uid =authData.uid.replace(/[^0-9]*/g,"");
+
+        //根据uid查询mongodb中对应的uid文档
+        var _url = ("users/"+uid).trim();
+        var usersRef = ref.child(_url);
+
+
+        usersRef.once("value", function(snapshot) {
+            //如何文档中uid是否存在，如果不存在，则创建
+            if(snapshot.val().uid!=uid){
+                console.log(snapshot.val().uid);
+                usersRef.update({
+                    "uid":uid
+                });
+            }
+
+            if(1){
+                var a = snapshot.val();
+
+                var inf = $("#modifyData");
+
+                $("#infname").value="sss";
+
+                inf.find("[name='user-uid']").val(a.uid);
+                inf.find("[name='user-email']").val(a.email);
+                if(a.sex){
+                    inf.find("[name='user-sex']").val(a.sex);
+                }
+                if(a.name){
+                    inf.find("[name='user-name']").val(a.name);
+                }
+                if(a.tel){
+                    inf.find("[name='user-tel']").val(a.tel);
+                }
+
+
+                //绑定submit的click事件
+                inf.find("[name='submit']").click(function(event){
+                var sex   = inf.find("[name='user-sex']").val(),
+                    name  = inf.find("[name='user-name']").val(),
+                    email = inf.find("[name='user-email']").val(),
+                    tel   = inf.find("[name='user-tel']").val();
+
+
+                if(sex!=""&&sex!= a.sex){
+                    usersRef.update({
+                        "sex":sex
+                    });
+                }
+                if(name!=""&&name!= a.name){
+                    usersRef.update({
+                        "name":name
+                    });
+                }
+                if(email!=""&&email!= a.email){
+                    usersRef.update({
+                        "email":email
+                    });
+                }
+                if(tel!=""&& tel!= a.tel){
+                    usersRef.update({
+                        "tel":tel
+                    });
+                }
+
+                    alert("修改完成");
+                    return false;
+                });
+
+
+                //获取相应的值
+
+                //阻止事件冒泡
+            }
+        }, function (errorObject) {
+            console.log("The read failed: " + errorObject.code);
+        });
+
+
+    }
+
+});
 
 
 $(".select").on("click", function(){
@@ -221,7 +464,7 @@ function getLocation() {
     //检查浏览器是否支持地理位置获取
     if (navigator.geolocation) {
         //若支持地理位置获取,成功调用showPosition(),失败调用showError
-        var config = { enableHighAccuracy: true, timeout: 5000, maximumAge: 30000 };
+        var config = { enableHighAccuracy: true, timeout: 2000, maximumAge: 30000 };
         navigator.geolocation.getCurrentPosition(showPosition, showError, config);
     } else {
         alert("定位失败,用户已禁用位置获取权限");
@@ -235,6 +478,7 @@ function showPosition(position) {
     //获得经度纬度
     var x = position.coords.latitude;
     var y = position.coords.longitude;
+    alert(x+":"+y);
     var map = new BMap.Map("allmap");
     var point = new BMap.Point(x,y);
     var geoc = new BMap.Geocoder();
@@ -291,8 +535,8 @@ function showWeather(city){
             temp.html(obj.retData.temp+"℃");
 
             var weather = obj.retData.weather;
-            var wea =$("#dateMessage").find(".current-weather-img");
-            wea.html("<br>"+weather);
+            var wea =$("#dateMessage").find(".current-weather-details");
+            wea.html(city+" "+weather);
 
         },
         error:function(data){
@@ -300,5 +544,8 @@ function showWeather(city){
         }
     });
 }
+
+
+
 
 
