@@ -9,27 +9,31 @@ var subject =[
         name :"chinese",
         cname:"语文",
         teacher:"tom",
-        location:"8-415"
+        location:"8-415",
+        classname:"软工1201"
     },
 
     {
         name:"english",
         cname:"英语",
         teacher:"hetao",
-        location:"8-415"
+        location:"8-415",
+        classname:"软工1201"
     },
 
     {
         name : "maths",
         cname:"数学",
         teacher:"fan",
-        location:"8-415"
+        location:"8-415",
+        classname:"软工1201"
     },
     {
         name:"",
         cname:"",
         teacher:"",
-        location:""
+        location:"",
+        classname:""
     }
 ];
 
@@ -44,24 +48,28 @@ var weeks=[
                 name :"chinese",
                 cname:"语文",
                 teacher:"tom",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
             },
             {
                 name:"english",
                 cname:"英语",
                 teacher:"hetao",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
 
             },{
                 name : "maths",
                 cname:"数学",
                 teacher:"fan",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
             },{
                 name :"chinese",
                 cname:"语文",
                 teacher:"tom",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
             }]
         },
         pm:{
@@ -70,24 +78,28 @@ var weeks=[
                 name :"chinese",
                 cname:"语文",
                 teacher:"tom",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
             },
             {
                 name:"english",
                 cname:"英语",
                 teacher:"hetao",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
 
             },{
                 name : "maths",
                 cname:"数学",
                 teacher:"fan",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
             },{
                 name :"chinese",
                 cname:"语文",
                 teacher:"tom",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
             }]
         },
         ng:{
@@ -96,24 +108,28 @@ var weeks=[
                 name :"chinese",
                 cname:"语文",
                 teacher:"tom",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
             },
             {
                 name:"english",
                 cname:"英语",
                 teacher:"hetao",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
 
             },{
                 name : "maths",
                 cname:"数学",
                 teacher:"fan",
-                location:"8-415"
+                location:"8-415",
+                    classname:"软工1201"
             },{
                 name :"chinese",
                 cname:"语文",
                 teacher:"tom",
-                location:"8-415"
+                location:"8-415",
+                    classname:"软工1201"
             }]
         }
     },
@@ -125,24 +141,28 @@ var weeks=[
                 name :"chinese",
                 cname:"语文",
                 teacher:"tom",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
             },
             {
                 name:"english",
                 cname:"英语",
                 teacher:"hetao",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
 
             },{
                 name : "maths",
                 cname:"数学",
                 teacher:"fan",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
             },{
                 name :"chinese",
                 cname:"语文",
                 teacher:"tom",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
             }]
         },
         pm:{
@@ -151,24 +171,28 @@ var weeks=[
                 name :"chinese",
                 cname:"语文",
                 teacher:"tom",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
             },
             {
                 name:"english",
                 cname:"英语",
                 teacher:"hetao",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
 
             },{
                 name : "maths",
                 cname:"数学",
                 teacher:"fan",
-                location:"8-415"
+                location:"8-415",
+                    classname:"软工1201"
             },{
                 name :"chinese",
                 cname:"语文",
                 teacher:"tom",
-                location:"8-415"
+                location:"8-415",
+                    classname:"软工1201"
             }]
         },
         ng:{
@@ -177,24 +201,28 @@ var weeks=[
                 name :"chinese",
                 cname:"语文",
                 teacher:"tom",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
             },
             {
                 name:"english",
                 cname:"英语",
                 teacher:"hetao",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
 
             },{
                 name : "maths",
                 cname:"数学",
                 teacher:"fan",
-                location:"8-415"
+                location:"8-415",
+                    classname:"软工1201"
             },{
                 name :"chinese",
                 cname:"语文",
                 teacher:"tom",
-                location:"8-415"
+                location:"8-415",
+                    classname:"软工1201"
             }]
     }
     },
@@ -206,24 +234,28 @@ var weeks=[
                 name :"chinese",
                 cname:"语文",
                 teacher:"tom",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
             },
             {
                 name:"english",
                 cname:"英语",
                 teacher:"hetao",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
 
             },{
                 name : "maths",
                 cname:"数学",
                 teacher:"fan",
-                location:"8-415"
+                location:"8-415",
+                    classname:"软工1201"
             },{
                 name :"chinese",
                 cname:"语文",
                 teacher:"tom",
-                location:"8-415"
+                location:"8-415",
+                    classname:"软工1201"
             }]
         },
         pm:{
@@ -232,24 +264,28 @@ var weeks=[
                 name :"chinese",
                 cname:"语文",
                 teacher:"tom",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
             },
             {
                 name:"english",
                 cname:"英语",
                 teacher:"hetao",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
 
             },{
                 name : "maths",
                 cname:"数学",
                 teacher:"fan",
-                location:"8-415"
+                location:"8-415",
+                    classname:"软工1201"
             },{
                 name :"chinese",
                 cname:"语文",
                 teacher:"tom",
-                location:"8-415"
+                location:"8-415",
+                    classname:"软工1201"
             }]
         },
         ng:{
@@ -258,24 +294,28 @@ var weeks=[
                 name :"chinese",
                 cname:"语文",
                 teacher:"tom",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
             },
             {
                 name:"english",
                 cname:"英语",
                 teacher:"hetao",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
 
             },{
                 name : "maths",
                 cname:"数学",
                 teacher:"fan",
-                location:"8-415"
+                location:"8-415",
+                    classname:"软工1201"
             },{
                 name :"chinese",
                 cname:"语文",
                 teacher:"tom",
-                location:"8-415"
+                location:"8-415",
+                    classname:"软工1201"
             }]
         }
     },
@@ -287,24 +327,29 @@ var weeks=[
                 name :"chinese",
                 cname:"语文",
                 teacher:"tom",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
             },
             {
                 name:"english",
                 cname:"英语",
                 teacher:"hetao",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
+
 
             },{
                 name : "maths",
                 cname:"数学",
                 teacher:"fan",
-                location:"8-415"
+                location:"8-415",
+                    classname:"软工1201"
             },{
                 name :"chinese",
                 cname:"语文",
                 teacher:"tom",
-                location:"8-415"
+                location:"8-415",
+                    classname:"软工1201"
             }]
         },
         pm:{
@@ -313,24 +358,28 @@ var weeks=[
                 name :"chinese",
                 cname:"语文",
                 teacher:"tom",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
             },
             {
                 name:"english",
                 cname:"英语",
                 teacher:"hetao",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
 
             },{
                 name : "maths",
                 cname:"数学",
                 teacher:"fan",
-                location:"8-415"
+                location:"8-415",
+                    classname:"软工1201"
             },{
                 name :"chinese",
                 cname:"语文",
                 teacher:"tom",
-                location:"8-415"
+                location:"8-415",
+                    classname:"软工1201"
             }]
         },
         ng:{
@@ -339,24 +388,28 @@ var weeks=[
                 name :"chinese",
                 cname:"语文",
                 teacher:"tom",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
             },
             {
                 name:"english",
                 cname:"英语",
                 teacher:"hetao",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
 
             },{
                 name : "maths",
                 cname:"数学",
                 teacher:"fan",
-                location:"8-415"
+                location:"8-415",
+                    classname:"软工1201"
             },{
                 name :"chinese",
                 cname:"语文",
                 teacher:"tom",
-                location:"8-415"
+                location:"8-415",
+                    classname:"软工1201"
             }]
         }
     },
@@ -368,24 +421,28 @@ var weeks=[
                 name :"chinese",
                 cname:"语文",
                 teacher:"tom",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
             },
             {
                 name:"english",
                 cname:"英语",
                 teacher:"hetao",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
 
             },{
                 name : "maths",
                 cname:"数学",
                 teacher:"fan",
-                location:"8-415"
+                location:"8-415",
+                    classname:"软工1201"
             },{
                 name :"chinese",
                 cname:"语文",
                 teacher:"tom",
-                location:"8-415"
+                location:"8-415",
+                    classname:"软工1201"
             }]
         },
         pm:{
@@ -394,24 +451,28 @@ var weeks=[
                 name :"chinese",
                 cname:"语文",
                 teacher:"tom",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
             },
             {
                 name:"english",
                 cname:"英语",
                 teacher:"hetao",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
 
             },{
                 name : "maths",
                 cname:"数学",
                 teacher:"fan",
-                location:"8-415"
+                location:"8-415",
+                    classname:"软工1201"
             },{
                 name :"chinese",
                 cname:"语文",
                 teacher:"tom",
-                location:"8-415"
+                location:"8-415",
+                    classname:"软工1201"
             }]
         },
         ng:{
@@ -420,24 +481,28 @@ var weeks=[
                 name :"chinese",
                 cname:"语文",
                 teacher:"tom",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
             },
             {
                 name:"english",
                 cname:"英语",
                 teacher:"hetao",
-                location:"8-415"
+                location:"8-415",
+                classname:"软工1201"
 
             },{
                 name : "maths",
                 cname:"数学",
                 teacher:"fan",
-                location:"8-415"
+                location:"8-415",
+                    classname:"软工1201"
             },{
                 name :"chinese",
                 cname:"语文",
                 teacher:"tom",
-                location:"8-415"
+                location:"8-415",
+                    classname:"软工1201"
             }]
         }
     }

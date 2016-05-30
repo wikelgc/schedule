@@ -196,8 +196,8 @@ td { width: 1px; white-space: nowrap; word-break: keep-all; padding: 5px; text-a
 .suggest { font-weight: normal; }
 .suggest span { float: right; }
 
-
-
+.black{color: #111;}
+.large{color: #111;font-size: 36px;}
 
 /*page2*/
 .collap-title{

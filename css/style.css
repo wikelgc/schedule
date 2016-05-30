@@ -47,6 +47,8 @@ td { width: 1px; white-space: nowrap; word-break: keep-all; padding: 5px; text-a
 .collap-content-right { float: right; text-align: right; }
 .collap-content-bottom { clear: both; }
 
+
+
 .ui-content a{
     text-decoration:none;
 }

@@ -1,10 +1,13 @@
 
 //页面的事件绑定
 $(document).on("pagebeforeshow", "#page1", function() {
+
+
+
     var now = new Date();
 
     //显示时间
-    showDateTime(now);
+    setInterval("showDateTime()",2000);
 
     //获取地理位置
     getLocation();
@@ -19,6 +22,47 @@ $(document).on("pagebeforeshow", "#page1", function() {
     showSubjectSection(now,$("#firstCourse"),courseTimer,0);
     //显示第二堂课的信息
     showSubjectSection(now,$("#secondCourse"),courseTimer+1,1);
+
+});
+
+
+$(document).on("pagebeforeshow", "#Loading", function() {
+
+    var load = $("#loading-load");
+    var timer = 0;
+    setInterval(function(){
+        if(timer == 0){
+            load.html("loading");
+
+        }else if(timer == 1){
+            load.html("loading.");
+        }
+        else if(timer == 2){
+            load.html("loading..");
+        }
+        else if(timer == 3){
+            load.html("loading...");
+        }
+        timer++;
+        if(timer >= 4){
+            timer = 0;
+        }
+    },1000);
+
+    //var ref = new Wilddog("https://timetable.wilddogio.com");
+    //var authData = ref.getAuth();
+    var authData = true;
+
+    if(authData){
+        //alert("登录成功");
+        $.mobile.changePage($("#page1"));
+    }else{
+        //alert("未登录");
+        $.mobile.changePage($("#Login"));
+    }
+
+
+    //alert(a);
 });
 
 
@@ -57,9 +101,10 @@ $(document).on("pagebeforeshow", "#page2", function() {
                 //alert("老师:"+subject[i].teacher+"上课地点");
                 var Items = "";
                 Items = "<a href='#' data-rel='back' class='ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right'>关闭</a>"+
-                    "<p>课程名:"+subject[i].cname+"</p>"+
-                    "<p>教师:"+subject[i].teacher+"</p>"+
-                    "<p>上课地点:"+subject[i].location+"</p>";
+                    "<p>教授课程:"+subject[i].cname+"</p>"+
+                    "<p>授课班级:"+subject[i].classname+"</p>"+
+                    "<p>授课地点:"+subject[i].location+"</p>"+
+                    "</br>";
 
                 $("#tip").html(Items);
             }
@@ -101,8 +146,7 @@ $(document).on("pagebeforeshow", "#pageRegister", function() {
                     } else {
                         alert("注册成功");
 
-
-                        $.mobile.changePage($("#page3"));
+                        $.mobile.changePage($("#pageLogin"));
                     }
                 });
         }else{
@@ -130,6 +174,15 @@ $(document).on("pagebeforeshow", "#pageLogin", function() {
 
     login.bind("click",function(e){
 
+        if(email.val().trim()==""){
+            alert("邮箱为空,请输入邮箱"+email);
+            return;
+        }
+        if(password.val().trim()==""){
+            alert("密码为空，请输入密码");
+            return ;
+        }
+
         if(email!=""&&password!=""){
             var ref = new Wilddog("https://timetable.wilddogio.com");
 
@@ -139,40 +192,41 @@ $(document).on("pagebeforeshow", "#pageLogin", function() {
             }, function(error,authData){
                 if (error) {
                     //console.log("登录失败", error);
-                    //alert("登录失败"+authData.toString());
+                    alert("登录失败,请重新登陆");
                 } else {
-                    //console.log("登录成功", authData);
-                    //alert("登录成功"+authData.toString());
-                    //登录成功后获取uid;
-                    //var authData = ref.getAuth();
 
-                    var _uid =authData.uid.replace(/[^0-9]*/g,"").trim();
+                    ref.once("value", function(snapshot) {
 
-                    var uid = '{"'+
+                        var _uid =authData.uid.replace(/[^0-9]*/g,"").trim();
+
+                        //如果有
+                        if(snapshot.child("users/"+_uid).hasChildren()){
+
+                        }else{
+                            var uid = '{"'+
                                 _uid+'":{' +
-                                    '"uid":"'+_uid+'",' +
-                                    '"email":"'+email.val().trim()+'"' +
+                                '"uid":"'+_uid+'",' +
+                                '"email":"'+email.val().trim()+'"' +
                                 '}' +
-                        '}';
+                                '}';
 
-                    var _uidjson = $.parseJSON(uid);
+                            var _uidjson = $.parseJSON(uid);
 
-                    var child = ref.child("users");
-                    child.update(_uidjson);
-
-
+                            var child = ref.child("users");
+                            child.update(_uidjson);
+                        }
+                    });
                     //console.log(email);
                     $.mobile.changePage($("#page3"));
                 }
             });
+            return
 
         }else{
             alert("请填好数据");
-            alert(email+":"+password);
             return;
         }
 
-        //跳转到注册成功页面
     });
 
 });
@@ -185,12 +239,9 @@ $(document).on("pagebeforeshow", "#page3", function() {
 
     //判断当前账户是否存在
     if (authData) {
-        //console.log("Authenticated user with uid:", authData.uid);
-        //alert("Authenticated user with uid:"+authData.uid);
-        //alert("登录成功");
         var state = $("#page3").find(".page-state");
         state.html("注销");
-
+        sessionStorage.removeItem("");
 
         if(state.html()=="注销"){
             state.click(function(){
@@ -203,6 +254,117 @@ $(document).on("pagebeforeshow", "#page3", function() {
 });
 
 
+//课表管理
+$(document).on("pagebeforeshow", "#classScheduleManage", function() {
+
+    var ref = new Wilddog("https://timetable.wilddogio.com");
+    var authData = ref.getAuth();
+
+    //判断当前账户是否存在
+    if (authData) {
+        //判断用户是否有课表
+
+        //从数据库中获取用户唯一uid
+        var uid =authData.uid.replace(/[^0-9]*/g,"");
+        //根据uid查询mongodb中对应的uid文档
+        var _url = ("users/"+uid).trim();
+        var usersRef = ref.child(_url);
+
+
+        usersRef.once("value", function(snapshot) {
+            //如何文档中uid存在则创建相应文档
+            if(snapshot.val().schedule){
+                //console.log(snapshot.val().uid);
+                //var schedule = ref.child("schedule");
+                alert(1);
+            }else{
+                usersRef.update({
+                    "schedule":""
+                });
+                alert(2);
+            };
+        }, function (errorObject) {
+            console.log("The read failed: " + errorObject.code);
+        });
+        //如果有，则读取课表数据
+
+
+
+
+
+    }else{
+        alert("请登录账户");
+        return;
+    }
+
+});
+
+
+//添加课表
+$(document).on("pagebeforeshow", "#addSchedule", function() {
+
+    var ref = new Wilddog("https://timetable.wilddogio.com");
+    var authData = ref.getAuth();
+
+    var name = $("#scheduleName").val().trim();
+    var classes = $("#scheduleClass").val().trim();
+    var notes = $("#scheduleNotes").val().trim();
+
+
+
+
+    //判断当前账户是否存在
+    if (authData) {
+        //判断用户是否有课表
+
+        //从数据库中获取用户唯一uid
+        var uid =authData.uid.replace(/[^0-9]*/g,"");
+        //根据uid查询mongodb中对应的uid文档
+        var _url = ("users/"+uid+"/schdule").trim();
+        var usersRef = ref.child(_url);
+
+        usersRef.update({
+            "schedule":""
+        });
+
+        alert(usersRef.val().length);
+        //usersRef.once("value", function(snapshot) {
+        //    //如何文档中uid存在则创建相应文档
+        //    if(snapshot.val().schedule){
+        //        //console.log(snapshot.val().uid);
+        //        //var schedule = ref.child("schedule");
+        //        alert(1);
+        //    }else{
+        //        usersRef.update({
+        //            "schedule":""
+        //        });
+        //        alert(2);
+        //    };
+        //}, function (errorObject) {
+        //    console.log("The read failed: " + errorObject.code);
+        //});
+        //如果有，则读取课表数据
+
+
+
+
+
+    }else{
+        alert("请登录账户");
+        return;
+    }
+
+});
+
+
+
+
+
+function addSchedule(){
+
+}
+
+
 
 //我的信息
 $(document).on("pagebeforeshow", "#myInformation", function() {
@@ -212,7 +374,6 @@ $(document).on("pagebeforeshow", "#myInformation", function() {
 
     //判断当前账户是否存在
     if (authData) {
-        //console.log("Authenticated user with uid:", authData.uid);
 
         //从数据库中获取用户唯一uid
         var uid =authData.uid.replace(/[^0-9]*/g,"");
@@ -283,47 +444,34 @@ $(document).on("pagebeforeshow", "#modifyData", function() {
 
                 $("#infname").value="sss";
 
-                inf.find("[name='user-uid']").val(a.uid);
-                inf.find("[name='user-email']").val(a.email);
-                if(a.sex){
-                    inf.find("[name='user-sex']").val(a.sex);
-                }
-                if(a.name){
-                    inf.find("[name='user-name']").val(a.name);
-                }
-                if(a.tel){
-                    inf.find("[name='user-tel']").val(a.tel);
-                }
-
 
                 //绑定submit的click事件
                 inf.find("[name='submit']").click(function(event){
-                var sex   = inf.find("[name='user-sex']").val(),
-                    name  = inf.find("[name='user-name']").val(),
-                    email = inf.find("[name='user-email']").val(),
-                    tel   = inf.find("[name='user-tel']").val();
+                    var sex   = inf.find("[name='user-sex']").val(),
+                        name  = inf.find("[name='user-name']").val(),
+                        email = inf.find("[name='user-email']").val(),
+                        tel   = inf.find("[name='user-tel']").val();
 
-
-                if(sex!=""&&sex!= a.sex){
-                    usersRef.update({
-                        "sex":sex
-                    });
-                }
-                if(name!=""&&name!= a.name){
-                    usersRef.update({
-                        "name":name
-                    });
-                }
-                if(email!=""&&email!= a.email){
-                    usersRef.update({
-                        "email":email
-                    });
-                }
-                if(tel!=""&& tel!= a.tel){
-                    usersRef.update({
-                        "tel":tel
-                    });
-                }
+                    if(sex!=""&&sex!= a.sex){
+                        usersRef.update({
+                            "sex":sex
+                        });
+                    }
+                    if(name!=""&&name!= a.name){
+                        usersRef.update({
+                            "name":name
+                        });
+                    }
+                    if(email!=""&&email!= a.email){
+                        usersRef.update({
+                            "email":email
+                        });
+                    }
+                    if(tel!=""&& tel!= a.tel){
+                        usersRef.update({
+                            "tel":tel
+                        });
+                    }
 
                     alert("修改完成");
                     return false;
@@ -342,6 +490,9 @@ $(document).on("pagebeforeshow", "#modifyData", function() {
     }
 
 });
+
+
+
 
 
 $(".select").on("click", function(){
@@ -368,7 +519,8 @@ getDataTime();
 
 
 //显示当周的日期和天气情况
-function showDateTime(now){
+function showDateTime(){
+    var now = new Date;
     var week = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
     var hour = now.getHours();
     var minute = now.getMinutes();
@@ -432,23 +584,23 @@ function showSubjectSection(now,id,courseTimer,type){
 
         if(courseTimer<4){
             subj.html(weeks[weeker].am.subject[courseTimer].cname);
-            teacN.html(weeks[weeker].am.subject[courseTimer].teacher);
+            teacN.html(weeks[weeker].am.subject[courseTimer].classname);
             location.html(weeks[weeker].am.subject[courseTimer].location)
 
         }else if(courseTimer<8){
             subj.html(weeks[weeker].pm.subject[courseTimer-4].cname);
-            teacN.html(weeks[weeker].am.subject[courseTimer-4].teacher);
+            teacN.html(weeks[weeker].am.subject[courseTimer-4].classname);
             location.html(weeks[weeker].am.subject[courseTimer-4].location)
         }else if(courseTimer<12){
             subj.html(weeks[weeker].pm.subject[courseTimer-8].cname);
-            teacN.html(weeks[weeker].am.subject[courseTimer-8].teacher);
+            teacN.html(weeks[weeker].am.subject[courseTimer-8].classname);
             location.html(weeks[weeker].am.subject[courseTimer-8].location)
         }
         time.html(Math.floor(timer[courseTimer]/100)+":"+Math.floor(timer[courseTimer]%100)%60);
     }
     else{
         subj.html(weeks[(weeker+1)%5].am.subject[type].cname);
-        teacN.html(weeks[(weeker+1)%5].am.subject[type].teacher);
+        teacN.html(weeks[(weeker+1)%5].am.subject[type].classname);
         location.html(weeks[(weeker+1)%5].am.subject[type].location);
         time.html(Math.floor(timer[type]/100)+":"+timer[type]%100);
         lastTime.html("明天")

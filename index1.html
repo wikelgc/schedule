@@ -2,53 +2,37 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>JQM Loading demo</title>
+		<title>教师上课提醒系统</title>
 		<meta name="viewport"
 			content="user-scalable=no, width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css">
+		<link rel="stylesheet" type="text/css" href="css/homepage.css">
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
 		<script src = "https://cdn.wilddog.com/js/client/current/wilddog.js" ></script>
 		<script type="text/javascript">
 
+
 		$(document).on("pagebeforeshow", "#Loading", function() {
-
-			var load = $("#loading-load");
-			var timer = 0;
-			setInterval(function(){
-				if(timer == 0){
-					load.html("loading");
-
-				}else if(timer == 1){
-					load.html("loading.");
-				}
-				else if(timer == 2){
-					load.html("loading..");
-				}
-				else if(timer == 3){
-					load.html("loading...");
-				}
-				timer++;
-				if(timer >= 4){
-					timer = 0;
-				}
-			},1000);
-
-			var ref = new Wilddog("https://timetable.wilddogio.com");
-			var authData = ref.getAuth();
-			var authData = true;
-
-			if(authData){
-				alert("1");
-				$.mobile.changePage('index.html#Login');
-			}else{
-				alert("2");
-				$.mobile.changePage('index.html#page1');
-			}
-
-
-			//alert(a);
+				$("")
 		});
+
+
+		var ref = new Wilddog("https://timetable.wilddogio.com");
+		var authData = ref.getAuth();
+		var authData = true;
+
+//			if(authData){
+//				alert("1");
+//				$.mobile.changePage('index.html#Login');
+//			}else{
+//				alert("2");
+//				$.mobile.changePage('index.html#page1');
+//			}
+//
+//
+//			//alert(a);
+//		});
 
 
 		</script>
@@ -57,7 +41,18 @@
 	<body>
 
 	<section data-role="page" id="Loading">
-		<div id="loading-load">loading</div>
-	</section>
+			<header data-role="header" data-position="fixed">
+				<h4><a id="homePage">教师上课提醒系统</a></h4>
+			</header>
+
+			<div class="center"><img src="images/1464627475.png"></div>
+			<div class="center">
+				<div class="center-inner">
+					<a href="http://wikelgc.github.io/schedule/" data-ajax='false'><button class="ui-btn ui-btn-inline">在线版</button></a>
+					<a href="index.html" data-ajax='false'><button class="ui-btn ui-btn-inline">离线版</button></a>
+				</a>
+			</div>
+
+		</section>
 	</body>
 </html>

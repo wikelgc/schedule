@@ -3,68 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=divice-width, initial-scale=1">
-
     <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css">
     <link rel="stylesheet" type="text/css" href="css/time.css">
     <title>教师上课提醒系统</title>
 </head>
 <body>
 
-<section data-role="page" id="ogin">
-    <header data-role="header" data-position="fixed">
-        <a href="#" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-shadow ui-corner-all" data-rel="back">返回</a>
-        <h1>登录</h1>
-    </header>
-    <ul data-role="listview">
-        <li>
-            <div id="loginForm" data-ajax="false" >
-                <div class="tip"></div>
-                <input type="email" name="email" placeholder="请输入注册邮箱">
-                <input type="password" name="password" placeholder="请输入密码">
-                <button name="login" class="ui-btn">登录</button>
-                <div class="ui-grid-a">
-                    <div class="ui-block-a">
-                        <fieldset data-role="controlgroup" class="ui-panel-inner">
-                            <input type="radio" id="remenberPassword" value="male">
-                            <label for="remenberPassword">记住密码</label>
-                        </fieldset>
-                     </div>
-                    <div class="ui-block-b">
-                       <a href="#"><button class="ui-btn">注册新账号</button></a>
-                    </div>
-                </div>
-            </div>
-        </li>
-    </ul>
+<!--loading-->
 
-    <article class="ui-content">
-        <div class="ui-field-contain">
-            <div>
-                <p>默认登录邮箱:123@qq.com</p>
-                <p>默认登录密码:666666</p>
-            </div>
-            <div class="ss">
-                <!--<img src="images/1463333957.png">-->
-            </div>
-        </div>
-    </article>
-
-    <footer data-role="footer" data-position="fixed">
-        <div data-role="navbar">
-            <ul>
-                <li><a href="#page1" class="ui-btn ui-icon-home ui-btn-icon-top" data-ajax="false">首页</a></li>
-                <li><a href="#page2" class="ui-btn ui-icon-bars ui-btn-icon-top" data-ajax="false">课程表</a></li>
-                <li><a href="#page3" class="ui-btn ui-icon-user ui-btn-icon-top" data-ajax="false">我的</a></li>
-            </ul>
-        </div>
-    </footer>
-</section>
 
 <!-- 页面一 -->
 <section data-role="page" id="page1">
     <header data-role="header" data-position="fixed">
         <a href="#" class="ui-btn ui-icon-home ui-btn-icon-notext ui-shadow ui-corner-all location">选择城市</a>
-        <h4><a id="homePage">上课提醒系统</a></h4>
+        <h4><a id="homePage">教师上课提醒系统</a></h4>
         <a href="#" class="ui-btn ui-icon-plus ui-btn-icon-notext ui-shadow ui-corner-all select">下拉</a>
     </header>
     <section role="main" class="ui-content" id="dateMessage">
@@ -88,12 +40,12 @@
             <div class="header-wrap">下一节课</div>
             <div class="top-wrap">
                 <div class="top-left"><span class="course-subject">微积分</span></div>
-                <div class="top-right">距上课<br><span class="last-time">0:05</span></div>
+                <div class="top-right">距上课<br><span class="last-time large">0:05</span></div>
             </div>
             <div class="bottom-wrap">
-                    <div class="bottom-left">上课老师<br><span class="teacher-name">阳阳</span></div>
-                <div class="bottom-center">上课地点<br><span class="class-location">4-15</span></div>
-                <div class="bottom-right">上课时间<br><span class="class-time">12:45</span></div>
+                    <div class="bottom-left">授课老师<br><span class="teacher-name ">阳阳</span></div>
+                <div class="bottom-center">授课地点<br><span class="class-location black">4-15</span></div>
+                <div class="bottom-right">授课时间<br><span class="class-time black">12:45</span></div>
                 <div class="clear"></div>
             </div>
         </div>
@@ -104,12 +56,12 @@
             <div class="header-wrap">第二节课</div>
             <div class="top-wrap">
                 <div class="top-left"><span class="course-subject">英语</span></div>
-                <div class="top-right"><br>距上课<br><span class="last-time">1:00</span></div>
+                <div class="top-right"><br>距上课<br><span class="last-time ">1:00</span></div>
             </div>
             <div class="bottom-wrap">
-                <div class="bottom-left">上课老师<br><span class="teacher-name">阳阳</span></div>
-                <div class="bottom-center">上课地点<br><span class="class-location">4-15</span></div>
-                <div class="bottom-right">上课时间<br><span class="class-time">1:45</span></div>
+                <div class="bottom-left">授课班级<br><span class="teacher-name ">阳阳</span></div>
+                <div class="bottom-center">授课地点<br><span class="class-location black">4-15</span></div>
+                <div class="bottom-right">授课时间<br><span class="class-time black">1:45</span></div>
                 <div class="clear"></div>
             </div>
         </div>
@@ -131,7 +83,7 @@
 <section data-role="page" id="page2">
     <header data-role="header" data-position="fixed">
         <a href="#" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-shadow ui-corner-all" data-rel="back">返回</a>
-        <h1>第九周</h1>
+        <h1>第十四周</h1>
         <a href="#addClass" class="ui-btn ui-icon-plus ui-btn-icon-notext ui-shadow ui-corner-all"></a>
     </header>
     <section role="main" class="ui-content page2Main" >
@@ -263,9 +215,6 @@
 </section>
 
 
-
-
-
 <!--未登录的设置页面-->
 <section data-role="page" id="page3">
     <header data-role="header" data-position="fixed">
@@ -276,8 +225,8 @@
         <div class="ui-field-contain">
             <ul data-role="listview">
                 <li><a href="#pageLogin" class="page-state">点击登录</a></li>
-                <li><a>当前周数</a></li>
-                <li><a href="#">课表管理</a></li>
+                <li><a>当前周数 | <span class="now-week">第十四周</span></a></li>
+                <li><a href="#classScheduleManage">课表管理</a></li>
                 <li><a href="#myInformation">我的资料</a></li>
                 <li><a href="#message">消息</a></li>
                 <li><a href="#collection">收藏</a></li>
@@ -316,7 +265,7 @@
             <ul data-role="listview">
                 <li><a href="#pageLogin">注销</a></li>
                 <li><a>当前周数</a></li>
-                <li><a href="#">课表管理</a></li>
+                <li><a href="#classScheduleManage">课表管理</a></li>
                 <li><a href="#myInformation">我的资料</a></li>
                 <li><a href="#message">消息</a></li>
                 <li><a href="#collection">收藏</a></li>
@@ -350,6 +299,48 @@
 
 
 <!--登录-->
+<!--<section data-role="page" id="pageLogin1">-->
+    <!--<header data-role="header" data-position="fixed">-->
+        <!--<a href="#" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-shadow ui-corner-all" data-rel="back">返回</a>-->
+        <!--<h1>登录</h1>-->
+    <!--</header>-->
+    <!--<ul data-role="listview">-->
+        <!--<li>-->
+            <!--<div id="loginForm" data-ajax="false" >-->
+                <!--<div class="tip"></div>-->
+                <!--<input type="email" name="email" placeholder="请输入注册邮箱">-->
+                <!--<input type="password" name="password" placeholder="请输入密码">-->
+                <!--<div class="ui-grid-a">-->
+                    <!--<div class="ui-block-a"><a href="#pageRegister" type="button"  class="ui-btn">注册</a></div>-->
+                    <!--<div class="ui-block-b"><button name="login" class="ui-btn">登录</button></div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</li>-->
+    <!--</ul>-->
+
+    <!--<article class="ui-content">-->
+        <!--<div class="ui-field-contain">-->
+            <!--<div>-->
+                <!--<p>默认登录邮箱:123@qq.com</p>-->
+                <!--<p>默认登录密码:666666</p>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</article>-->
+
+    <!--<footer data-role="footer" data-position="fixed">-->
+        <!--<div data-role="navbar">-->
+            <!--<ul>-->
+                <!--<li><a href="#page1" class="ui-btn ui-icon-home ui-btn-icon-top" data-ajax="false">首页</a></li>-->
+                <!--<li><a href="#page2" class="ui-btn ui-icon-bars ui-btn-icon-top" data-ajax="false">课程表</a></li>-->
+                <!--<li><a href="#page3" class="ui-btn ui-icon-user ui-btn-icon-top" data-ajax="false">我的</a></li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</footer>-->
+<!--</section>-->
+
+
+
+
 <section data-role="page" id="pageLogin">
     <header data-role="header" data-position="fixed">
         <a href="#" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-shadow ui-corner-all" data-rel="back">返回</a>
@@ -361,9 +352,17 @@
                 <div class="tip"></div>
                 <input type="email" name="email" placeholder="请输入注册邮箱">
                 <input type="password" name="password" placeholder="请输入密码">
+                <button name="login" class="ui-btn">登录</button>
                 <div class="ui-grid-a">
-                    <div class="ui-block-a"><a href="#pageRegister" type="button"  class="ui-btn">注册</a></div>
-                    <div class="ui-block-b"><button name="login" class="ui-btn">登录</button></div>
+                    <div class="ui-block-a">
+                        <fieldset data-role="controlgroup" class="ui-panel-inner">
+                            <input type="radio" id="remenberPassword" value="male">
+                            <label for="remenberPassword">记住密码</label>
+                        </fieldset>
+                    </div>
+                    <div class="ui-block-b">
+                        <a href="#"><button class="ui-btn">注册新账号</button></a>
+                    </div>
                 </div>
             </div>
         </li>
@@ -374,6 +373,9 @@
             <div>
                 <p>默认登录邮箱:123@qq.com</p>
                 <p>默认登录密码:666666</p>
+            </div>
+            <div class="ss">
+                <!--<img src="images/1463333957.png">-->
             </div>
         </div>
     </article>
@@ -388,11 +390,6 @@
         </div>
     </footer>
 </section>
-
-
-
-
-
 
 <!--注册-->
 <section data-role="page" id="pageRegister">
@@ -512,60 +509,51 @@
                     <fieldset data-role="controlgroup" data-type="horizontal">
                     <legend>星期</legend>
                     <label for="Week1">星期一</label>
-                    <input type="radio" name="weeks" id="Week1">
+                    <input type="checkbox" name="weeks" id="Week1">
                     <label for="Week2">星期二</label>
-                    <input type="radio" name="weeks" id="Week2">
+                    <input type="checkbox" name="weeks" id="Week2">
                     <label for="week3">星期三</label>
-                    <input type="radio" name="weeks" id="week3">
+                    <input type="checkbox" name="weeks" id="week3">
                     <label for="week4">星期四</label>
-                    <input type="radio" name="weeks" id="week4">
+                    <input type="checkbox" name="weeks" id="week4">
                     <label for="week5">星期五</label>
-                    <input type="radio" name="weeks" id="week5">
+                    <input type="checkbox" name="weeks" id="week5">
                     <label for="week6">星期六</label>
-                    <input type="radio" name="weeks" id="week6">
+                    <input type="checkbox" name="weeks" id="week6">
                     <label for="week7">星期日</label>
-                    <input type="radio" name="weeks" id="week7">
+                    <input type="checkbox " name="weeks" id="week7">
                 </fieldset></li>
 
                 <li>
                     <fieldset data-role="controlgroup" data-type="horizontal">
                         <legend>上课的堂次</legend>
                         <label for="course1">第一节课</label>
-                        <input type="radio" name="course" id="course1">
+                        <input type="checkbox" name="course" id="course1">
                         <label for="course2">第二节课</label>
-                        <input type="radio" name="course" id="course2">
+                        <input type="checkbox" name="course" id="course2">
                         <label for="course3">第三节课</label>
-                        <input type="radio" name="course" id="course3">
+                        <input type="checkbox" name="course" id="course3">
                         <label for="course4">第四节课</label>
-                        <input type="radio" name="course" id="course4">
+                        <input type="checkbox" name="course" id="course4">
                         <label for="course5">第五节课</label>
-                        <input type="radio" name="course" id="course5">
+                        <input type="checkbox" name="course" id="course5">
                         <label for="course6">第六节课</label>
-                        <input type="radio" name="course" id="course6">
+                        <input type="checkbox" name="course" id="course6">
                         <label for="course7">第七节课</label>
-                        <input type="radio" name="course" id="course7">
+                        <input type="checkbox" name="course" id="course7">
                         <label for="course8">第八节课</label>
-                        <input type="radio" name="course" id="course8">
+                        <input type="checkbox" name="course" id="course8">
                         <label for="course9">第九节课</label>
-                        <input type="radio" name="course" id="course9">
+                        <input type="checkbox" name="course" id="course9">
                         <label for="course10">第十节课</label>
-                        <input type="radio" name="course" id="course10">
+                        <input type="checkbox" name="course" id="course10">
                         <label for="course11">第十一节课</label>
-                        <input type="radio" name="course" id="course11">
+                        <input type="checkbox" name="course" id="course11">
                         <label for="course12">第十二节课</label>
-                        <input type="radio" name="course" id="course12">
+                        <input type="checkbox" name="course" id="course12">
                     </fieldset></li>
                 <li>
-                    <fieldset data-role="controlgroup" data-type="horizontal">
-                        <legend>单双周：</legend>
-                        <label for="Weeks">单双周</label>
-                        <input type="radio" name="week" id="Weeks">
-                        <label for="oneWeek">单周</label>
-                        <input type="radio" name="week" id="oneWeek">
-                        <label for="twoWeek">双周</label>
-                        <input type="radio" name="week" id="twoWeek">
-                    </fieldset>
-                    <br>
+
                     <fieldset data-role="controlgroup" data-type="horizontal">
                         <legend>上课的周次：</legend>
                         <label for="week-1">01</label>
@@ -666,6 +654,96 @@
     </footer>
 </section>
 
+<!--课表管理-->
+<section data-role="page" id="classScheduleManage">
+    <header data-role="header" data-position="fixed">
+        <a href="#" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-shadow ui-corner-all" data-rel="back">放回</a>
+        <h1>课表管理</h1>
+    </header>
+    <article class="ui-content">
+        <div class="ui-field-contain">
+            <ul data-role="listview">
+                <li data-role="list-divider"><a>当前课表</a></li>
+                <li><a href="#classScheduleDetails">2016-1</a></li>
+                <li data-role="list-divider"><a>我的课表</a></li>
+                <li><a href="#scheduleManagement">2016-1</a></li>
+                <li><a>2015-2</a></li>
+                <li><a>2015-1</a></li>
+                <li><a>2014-2</a></li>
+                <li><a>2014-1</a></li>
+                <li data-role="list-divider"><a >添加课表</a></li>
+                <li><a href="#addSchedule" style="text-align: center"><span >+</span></a></li>
+            </ul>
+        </div>
+    </article>
+    <footer data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#page1" class="ui-btn ui-icon-home ui-btn-icon-top" data-ajax="false">首页</a></li>
+                <li><a href="#page2" class="ui-btn ui-icon-bars ui-btn-icon-top" data-ajax="false">课程表</a></li>
+                <li><a href="#page3" class="ui-btn ui-icon-user ui-btn-icon-top" data-ajax="false">我的</a></li>
+            </ul>
+        </div>
+    </footer>
+</section>
+
+<!--添加课表-->
+<section data-role="page" id="addSchedule">
+    <header data-role="header" data-position="fixed">
+        <a href="#" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-shadow ui-corner-all" data-rel="back">放回</a>
+        <h1>添加课表</h1>
+    </header>
+    <article class="ui-content">
+        <form method="post">
+            <div data-role="fieldcontain">
+                <label for="scheduleName">课表名称：</label>
+                <input type="text" name="user-name" id="scheduleName" placeholder="请输入本课表的学期">
+                <label for="scheduleClass">专业：</label>
+                <input type="text" name="user-sex" id="scheduleClass" placeholder="请输入本科表的专业">
+                <label for="scheduleNotes">时间：</label>
+                <input type="email" name="user-email" id="scheduleNotes" placeholder="请输入本课表的开始时间和结束时间">
+            </div>
+            <input type="submit" name="submit" value="提交">
+        </form>
+    </article>
+    <footer data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#page1" class="ui-btn ui-icon-home ui-btn-icon-top" data-ajax="false">首页</a></li>
+                <li><a href="#page2" class="ui-btn ui-icon-bars ui-btn-icon-top" data-ajax="false">课程表</a></li>
+                <li><a href="#page3" class="ui-btn ui-icon-user ui-btn-icon-top" data-ajax="false">我的</a></li>
+            </ul>
+        </div>
+    </footer>
+</section>
+<!--课表详情-->
+<section data-role="page" id="classScheduleDetails">
+    <header data-role="header" data-position="fixed">
+        <a href="#" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-shadow ui-corner-all" data-rel="back">放回</a>
+        <h1>课表详情</h1>
+    </header>
+    <article class="ui-content">
+        <div class="ui-field-contain">
+            <ul data-role="listview">
+                <li data-role="list-divider"><a>我的课程</a></li>
+                <li><a href="#">英语</a></li>
+                <li><a href="#">数学</a></li>
+                <li><a href="#">语文</a></li>
+                <li data-role="list-divider"><a>添加课程</a></li>
+                <li><a href="">+</a>
+            </ul>
+        </div>
+    </article>
+    <footer data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#page1" class="ui-btn ui-icon-home ui-btn-icon-top" data-ajax="false">首页</a></li>
+                <li><a href="#page2" class="ui-btn ui-icon-bars ui-btn-icon-top" data-ajax="false">课程表</a></li>
+                <li><a href="#page3" class="ui-btn ui-icon-user ui-btn-icon-top" data-ajax="false">我的</a></li>
+            </ul>
+        </div>
+    </footer>
+</section>
 
 <section data-role="page" id="feedback">
     <header data-role="header" data-position="fixed">

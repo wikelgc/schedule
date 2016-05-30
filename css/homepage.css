@@ -1,0 +1,15 @@
+.center{
+    margin:20px;
+    position: relative;
+}
+
+img{
+    display: block;
+    margin: 0 auto;
+}
+
+.center-inner{
+    width: 200px;
+    display: block;
+    margin: 0 auto;
+}
